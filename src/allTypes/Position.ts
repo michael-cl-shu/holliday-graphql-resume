@@ -1,5 +1,6 @@
 import { objectType } from 'nexus'
 import { differenceInYears, differenceInMonths } from 'date-fns'
+import { EmploymentType } from './index'
 
 export const Position = objectType({
   name: 'Position',
@@ -12,7 +13,7 @@ export const Position = objectType({
       resolve: (position) =>
         position.endDate ? new Date(position.endDate) : null,
     })
-    t.string('employmentType')
+    t.field('employmentType', { type: EmploymentType })
     t.string('location')
     t.list.string('achievements')
     t.int('years', {

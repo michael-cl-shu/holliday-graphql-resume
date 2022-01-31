@@ -17,10 +17,17 @@ A date string, such as 2007-12-03, compliant with the `full-date` format outline
 """
 scalar Date
 
+enum EmploymentType {
+  CONSTRACT
+  FULL_TIME
+  INTERNSHIP
+  PART_TIME
+}
+
 type Position {
   achievements: [String]
   company: String
-  employmentType: String
+  employmentType: EmploymentType
   endDate: Date
   id: ID
   location: String
