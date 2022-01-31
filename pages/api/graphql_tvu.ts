@@ -6,6 +6,7 @@ const cors = Cors()
 
 const apolloServer = new ApolloServer({
   schema,
+  introspection: true,
 })
 
 const startServer = apolloServer.start()
