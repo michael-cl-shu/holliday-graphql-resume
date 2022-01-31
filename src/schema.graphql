@@ -30,6 +30,7 @@ type Position {
 
 type Query {
   bio: Bio
+  position(id: ID): Position
   positions: [Position]
 }
 

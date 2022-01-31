@@ -1,7 +1,6 @@
-import { queryType } from 'nexus'
+import { queryType, idArg } from 'nexus'
 import { data } from 'src/data'
-import { Bio } from './index'
-import { Position } from './Position'
+import { Bio, Position } from './index'
 
 export const Query = queryType({
   definition(t) {
@@ -12,6 +11,11 @@ export const Query = queryType({
     t.list.field('positions', {
       type: Position,
       resolve: () => data.positions,
+    })
+    t.field('position', {
+      type: Position,
+      args: { id: idArg() },
+      resolve: (_, { id }) => data.positions.find((p) => p.id === id),
     })
   },
 })
