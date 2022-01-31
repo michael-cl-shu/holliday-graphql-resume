@@ -24,8 +24,12 @@ type Position {
   endDate: Date
   id: ID
   location: String
+  months: Int
   startDate: Date
   title: String
+
+  """Number of years at this position"""
+  years: Int
 }
 
 type Query {

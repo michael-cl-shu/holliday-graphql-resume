@@ -1,4 +1,5 @@
 import { objectType } from 'nexus'
+import { differenceInYears, differenceInMonths } from 'date-fns'
 
 export const Position = objectType({
   name: 'Position',
@@ -14,5 +15,20 @@ export const Position = objectType({
     t.string('employmentType')
     t.string('location')
     t.list.string('achievements')
+    t.int('years', {
+      description: 'Number of years at this position',
+      resolve: ({ endDate, startDate }) =>
+        differenceInYears(
+          endDate ? new Date(endDate) : new Date(),
+          new Date(startDate)
+        ),
+    })
+    t.int('months', {
+      resolve: ({ endDate, startDate }) =>
+        differenceInMonths(
+          endDate ? new Date(endDate) : new Date(),
+          new Date(startDate)
+        ) % 12,
+    })
   },
 })
